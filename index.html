@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Timer</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div id="settings">
+        <h2>Ayarlar</h2>
+        <label>Süre (Dakika): <input type="number" id="baseTime" value="5" min="1"></label><br>
+        <label>Ekstra Süre (Saniye): <input type="number" id="increment" value="2" min="0"></label><br>
+        <button onclick="startGame()">Tamam</button>
+    </div>
+    
+    <div id="game" style="display: none;">
+        <h2>Chess Timer</h2>
+        <div class="timer" id="whiteTime">5:00</div>
+        <button onclick="switchTurn('white')">Beyaz Hamle</button>
+        <div class="timer" id="blackTime">5:00</div>
+        <button onclick="switchTurn('black')">Siyah Hamle</button>
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>
