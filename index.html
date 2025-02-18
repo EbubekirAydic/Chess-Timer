@@ -25,18 +25,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-md-6 order-1 order-md-1 text-start">
                 <label>Dakika:</label>
             </div>
-            <div class="col">
+            <div class="col-md-6 order-2 order-md-2">
                 <input autocomplete="off" spellcheck="false" class="kanit-light" type="number" id="baseTime" value="5" min="1">
             </div>
         </div>
-        <div class="row">
-            <div class="col">
+        <div class="row my-3">
+            <div class="col-md-6 order-1 order-md-1-7 text-start">
                 Ekstra Saniye:  
             </div>
-            <div class="col">
+            <div class="col-md-6 order-2 order-md-2">
                 <input class="kanit-light" type="number" id="increment" value="2" min="0">
             </div>
         </div>
@@ -47,16 +47,20 @@
     
     <div id="game" style="display: none;">
 
-        <div class="container text-white">
+        <div class="container text-white" id="gameDiv">
             <div class="row">
                 <div class="col">
-                    <h2>Chess Timer</h2>
+                    <h1>Chess Timer</h1>
                 </div>
             </div>
-            <div id="Timess" class="row">
+            <div id="Timess" class="row m-0">
                 <div class="col OrtalamaXY">
-                    <div class="timer" id="whiteTime" class="me-1">5:00</div>
-                    <div class="timer" id="blackTime" class="ms-1">5:00</div>
+                    <div class="col me-3">
+                        <div class="timer" id="whiteTime" class="me-1">5:00</div>
+                    </div>
+                    <div class="col ms-3">
+                        <div class="timer" id="blackTime" class="ms-1">5:00</div>
+                    </div>
                 </div>
             </div>
         </div>

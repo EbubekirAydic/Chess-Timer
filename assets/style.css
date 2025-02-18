@@ -1,24 +1,24 @@
 body {
-
-    font-family: "Kanit", serif;
-    font-family: sans-serif;
-
+    font-family: "Kanit", sans-serif;
     text-align: center;
-
-    font-size: 2rem;
+    font-size: 1.6rem;
     background-color: #292929;
+    color: #ffffff; /* Yazı rengini beyaz yaparak daha okunabilir hale getirdim */
 }
+
 .timer {
     font-size: 10vw;
+    cursor: pointer;
 
     display: flex;
     border-radius: 20px;
     align-items: center;   /* Dikeyde ortalama */
     justify-content: center; /* Yatayda ortalama */
-    width: 40vw; /* Ekranın genişliğine göre */
-    height: 40vw; /* Ekranın genişliğine göre */
+    width: 45vw; /* Ekranın genişliğine göre */
+    height: 45vw; /* Ekranın genişliğine göre */
     aspect-ratio: 1; /* Kare yapmak için */
-    background-color: green;
+    
+    background-color: #3c3c3c; /* Yeşil yerine daha modern bir renk tonu */
 }
 
 .OrtalamaXY{
@@ -59,6 +59,7 @@ input{
     border: 2px solid #ff000000;
     border-bottom: 2px solid #484848;
     color:aliceblue;
+    width: 100%;
 }
 input:focus {
     outline: none;
@@ -70,5 +71,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @media (max-width:768px){
-
+    .timer{
+    }
 }
