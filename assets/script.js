@@ -137,17 +137,6 @@ if (/Mobi|Android/i.test(navigator.userAgent) || Tester) {
 
     console.log(document.getElementById("gameDiv").innerHTML);
 
-    document.getElementById("gameDiv").innerHTML = `
-            <div class="row">
-                <div class="col">
-                    <h1>Chess Timer</h1>
-                </div>
-            </div>` + document.getElementById("Timess").innerHTML + `
-            <div class="row">
-                <div class="col">
-                    <h1 style="transform: rotate(180deg);">Chess Timer</h1>
-                </div>
-            </div>`;
     
             console.log(document.getElementById("gameDiv").innerHTML);
                 
