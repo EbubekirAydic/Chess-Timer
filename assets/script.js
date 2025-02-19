@@ -70,22 +70,12 @@ function startGame() {
 }
 
 whiteTimer.addEventListener("click", function() {
-    console.log(whiteTime);
-    console.log(whiteTime == 0);
-    console.log(blackTime);
-    console.log(blackTime == 0);
     if (!whiteTime == 0 || blackTime == 0) {
-        console.log("AAAAAAAA2");
         currentTurn == null ? switchTurn('white', baseMinutes) : currentTurn == "white" ? switchTurn('white', baseMinutes) : "";
     }
 });
 blackTimer.addEventListener("click", function() {
-    console.log(whiteTime);
-    console.log(whiteTime == 0);
-    console.log(blackTime);
-    console.log(blackTime == 0);
     if (!whiteTime == 0 || blackTime == 0) {
-        console.log("AAAAAAAA3");
         currentTurn == null ? switchTurn('black', baseMinutes) : currentTurn == "black" ? switchTurn('black', baseMinutes) : "";
     }
 });
