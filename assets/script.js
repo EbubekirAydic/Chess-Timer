@@ -16,8 +16,6 @@ if (/Mobi|Android/i.test(navigator.userAgent)) {
                     </div>
                 </div>`
 
-    console.log(document.getElementById("gameDiv").innerHTML);
-
     document.getElementById("gameDiv").innerHTML = `
             <div class="row">
                 <div class="col position-absolute top-0 start-0 end-0">
@@ -29,8 +27,6 @@ if (/Mobi|Android/i.test(navigator.userAgent)) {
                     <h1 style="transform: rotate(180deg);">Chess Timer</h1>
                 </div>
             </div>`;
-    
-            console.log(document.getElementById("gameDiv").innerHTML);
                 
     document.getElementById("whiteTime").style.transform = "rotate(180deg)";
 
@@ -201,4 +197,3 @@ function formatTime(seconds) {
     let secs = Math.floor(seconds % 60);
     return "<b>" + `${minutes}:${secs < 10 ? '0' : ''}${secs}` + "</b>";
 }
-
