@@ -120,8 +120,6 @@ function formatTime(seconds) {
 if (/Mobi|Android/i.test(navigator.userAgent) || Tester) {
     console.log("Mobil cihaz kullanılıyor.");
 
-    console.log(document.getElementById("gameDiv").innerHTML);
-
     // 180 derece döndürme işlemi
     document.getElementById("Timess").innerHTML = `
                 <div class="row my-1">
@@ -134,11 +132,19 @@ if (/Mobi|Android/i.test(navigator.userAgent) || Tester) {
                         <div class="timer" id="blackTime">5:00</div>
                     </div>
                 </div>`
-
-    console.log(document.getElementById("gameDiv").innerHTML);
-
     
-            console.log(document.getElementById("gameDiv").innerHTML);
+
+    document.getElementById("gameDiv").innerHTML = `
+            <div class="row">
+                <div class="col position-absolute top-0 start-0 end-0">
+                    <h1>Chess Timer</h1>
+                </div>
+            </div>` + document.getElementById("Timess").innerHTML + `
+            <div class="row">
+                <div class="col position-absolute bottom-0 start-0 end-0">
+                    <h1 style="transform: rotate(180deg);">Chess Timer</h1>
+                </div>
+            </div>`;
                 
     document.getElementById("whiteTime").style.transform = "rotate(180deg)";
 
