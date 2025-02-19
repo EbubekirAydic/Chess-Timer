@@ -3,25 +3,35 @@ body {
     text-align: center;
     font-size: 1.6rem;
     background-color: #292929;
-    color: #ffffff; /* Yazı rengini beyaz yaparak daha okunabilir hale getirdim */
+    color: #ffffff;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+html {
+    height: 100%;
 }
 
 .timer {
     font-size: 10vw;
     cursor: pointer;
-
     display: flex;
     border-radius: 20px;
-    align-items: center;   /* Dikeyde ortalama */
-    justify-content: center; /* Yatayda ortalama */
-    width: 45vw; /* Ekranın genişliğine göre */
-    height: 45vw; /* Ekranın genişliğine göre */
-    aspect-ratio: 1; /* Kare yapmak için */
-    
-    background-color: #3c3c3c; /* Yeşil yerine daha modern bir renk tonu */
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    height: 40vw;
+    aspect-ratio: 1;
+    background-color: #3c3c3c;
+    color: #000000;
+    transition: color 0.1s;
 }
 
-.OrtalamaXY{
+.OrtalamaXY {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,19 +43,7 @@ button {
     margin: 10px;
 }
 
-.kanit-light {
-    font-family: "Kanit", serif;
-    font-weight: 300;
-    font-style: normal;
-}
-
-.kanit-regular {
-    font-family: "Kanit", serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-#settings{
+#settings {
     padding: 2vh;
     padding-top: 3vh;
     background-color: #343434;
@@ -54,23 +52,53 @@ button {
     color: aliceblue;
 }
 
-input{
-    background-color: #ff000000;
-    border: 2px solid #ff000000;
+input {
+    background-color: transparent;
+    border: 2px solid transparent;
     border-bottom: 2px solid #484848;
-    color:aliceblue;
+    color: aliceblue;
     width: 100%;
 }
+
 input:focus {
     outline: none;
 }
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-@media (max-width:768px){
-    .timer{
+@media (max-width: 768px) {
+    #game {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #gameDiv {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    #Timess {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
+    }
+    
+    .timer {
+        width: 70vw;
+        height: 70vw;
     }
 }

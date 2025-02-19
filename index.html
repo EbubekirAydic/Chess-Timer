@@ -29,7 +29,7 @@
                 <label>Dakika:</label>
             </div>
             <div class="col-md-6 order-2 order-md-2">
-                <input autocomplete="off" spellcheck="false" class="kanit-light" type="number" id="baseTime" value="5" min="1">
+                <input autocomplete="off" spellcheck="false" class="kanit-light" type="number" id="baseTime" value="4" min="1">
             </div>
         </div>
         <div class="row my-3">
@@ -47,7 +47,7 @@
     
     <div id="game" style="display: none;">
 
-        <div class="container text-white" id="gameDiv">
+        <div class="container text-white d-flex flex-column" id="gameDiv">
             <div class="row">
                 <div class="col">
                     <h1>Chess Timer</h1>
@@ -56,10 +56,10 @@
             <div id="Timess" class="row m-0">
                 <div class="col OrtalamaXY">
                     <div class="col me-3">
-                        <div class="timer" id="whiteTime" class="me-1">5:00</div>
+                        <div class="timer me-1 user-select-none" id="whiteTime">5:00</div>
                     </div>
                     <div class="col ms-3">
-                        <div class="timer" id="blackTime" class="ms-1">5:00</div>
+                        <div class="timer ms-1 user-select-none" id="blackTime">5:00</div>
                     </div>
                 </div>
             </div>

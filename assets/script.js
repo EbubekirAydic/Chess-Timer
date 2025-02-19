@@ -1,9 +1,49 @@
-let whiteTime, blackTime, increment, currentTurn = null, Tester = false, interval, baseMinutes;
+if (/Mobi|Android/i.test(navigator.userAgent)) {
+    console.log("Mobil cihaz kullanılıyor.");
+
+    console.log(document.getElementById("gameDiv").innerHTML);
+
+    // 180 derece döndürme işlemi
+    document.getElementById("Timess").innerHTML = `
+                <div class="row my-1">
+                    <div class="col OrtalamaXY">
+                        <div class="timer user-select-none" id="whiteTime">5:00</div>
+                    </div>
+                </div>
+                <div class="row my-1">
+                    <div class="col OrtalamaXY">
+                        <div class="timer user-select-none" id="blackTime">5:00</div>
+                    </div>
+                </div>`
+
+    console.log(document.getElementById("gameDiv").innerHTML);
+
+    document.getElementById("gameDiv").innerHTML = `
+            <div class="row">
+                <div class="col position-absolute top-0 start-0 end-0">
+                    <h1>Chess Timer</h1>
+                </div>
+            </div>` + document.getElementById("Timess").innerHTML + `
+            <div class="row">
+                <div class="col position-absolute bottom-0 start-0 end-0">
+                    <h1 style="transform: rotate(180deg);">Chess Timer</h1>
+                </div>
+            </div>`;
+    
+            console.log(document.getElementById("gameDiv").innerHTML);
+                
+    document.getElementById("whiteTime").style.transform = "rotate(180deg)";
+
+} else {
+    console.log("Masaüstü cihaz kullanılıyor.");
+}
+
+let whiteTime, blackTime, increment, currentTurn = null, interval, baseMinutes;
 
 let whiteTimer = document.getElementById("whiteTime");
 let blackTimer = document.getElementById("blackTime");
 
-let StorageKey = {time : 1, Ekstra : 2};
+let StorageKey = {time : 10, Ekstra : 2};
 
 if (localStorage.getItem("StorageKey")) {
     StorageKey = JSON.parse(localStorage.getItem("StorageKey"));
@@ -34,12 +74,22 @@ function startGame() {
 }
 
 whiteTimer.addEventListener("click", function() {
+    console.log(whiteTime);
+    console.log(whiteTime == 0);
+    console.log(blackTime);
+    console.log(blackTime == 0);
     if (!whiteTime == 0 || blackTime == 0) {
+        console.log("AAAAAAAA2");
         currentTurn == null ? switchTurn('white', baseMinutes) : currentTurn == "white" ? switchTurn('white', baseMinutes) : "";
     }
 });
 blackTimer.addEventListener("click", function() {
+    console.log(whiteTime);
+    console.log(whiteTime == 0);
+    console.log(blackTime);
+    console.log(blackTime == 0);
     if (!whiteTime == 0 || blackTime == 0) {
+        console.log("AAAAAAAA3");
         currentTurn == null ? switchTurn('black', baseMinutes) : currentTurn == "black" ? switchTurn('black', baseMinutes) : "";
     }
 });
@@ -64,46 +114,81 @@ function getColor(time, baseTime) {
 
 
 function switchTurn(player, baseMinutes) {
-    whiteTimer.style.backgroundColor = "#3c3c3c";
-    blackTimer.style.backgroundColor = "#3c3c3c";
+
+    console.log("AAAAAAAA");
+
+    if (currentTurn) {
+        if (currentTurn === 'white'){
+            whiteTime += increment;
+            updateDisplay();
+        } 
+        else{
+            blackTime += increment;
+            updateDisplay();
+        }
+    }
+
+    deActive();
 
     //burada süreye göre örnek beyazın saniye 60 yani 100% ise = yeşil, saniye 30 yani 50% ise = turuncu, saniye 0 yani 0% ise = kırmızı olsun rengi
     let whiteColor = getColor(whiteTime, baseMinutes);
     let blackColor = getColor(blackTime, baseMinutes);
 
-    whiteTimer.style.transition = "background-color 0.5s ease";
-    blackTimer.style.transition = "background-color 0.5s ease";
+    whiteTimer.style.transition = "background-color 0.1s ease";
+    blackTimer.style.transition = "background-color 0.1s ease";
 
     clearInterval(interval);
 
-    if (currentTurn) {
-        if (currentTurn === 'white') whiteTime += increment;
-        else blackTime += increment;
-    }
 
     if (currentTurn) {
-        player == "white" ? blackTimer.style.backgroundColor = blackColor : whiteTimer.style.backgroundColor = whiteColor;
+        if (player == "white") {
+            blackTimer.style.backgroundColor = blackColor;
+            blackTimer.style.color = "#ffffff"
+        }else{
+            whiteTimer.style.backgroundColor = whiteColor;
+            whiteTimer.style.color = "#ffffff";
+        }
+
         if (currentTurn == "white") {
             currentTurn = 'black';
         } else {
             currentTurn = 'white';
         }
     } else {
-        player == "white" ? whiteTimer.style.backgroundColor = whiteColor : blackTimer.style.backgroundColor = blackColor;
+        if (player == "white") {
+            whiteTimer.style.backgroundColor = whiteColor;
+            whiteTimer.style.color = "#ffffff";
+        }else{
+            blackTimer.style.backgroundColor = blackColor;
+            blackTimer.style.color = "#ffffff"
+        }
         currentTurn = player;
     }
 
     interval = setInterval(() => {
         if (currentTurn === 'white') {
             whiteTimer.style.backgroundColor = getColor(whiteTime, baseMinutes);
-            whiteTime = Math.max(0, whiteTime - 1);
+            whiteTimer.style.color = "#ffffff";
+            whiteTime = Math.max(0, whiteTime - 0.01);
         } else {
             blackTimer.style.backgroundColor = getColor(blackTime, baseMinutes);
-            blackTime = Math.max(0, blackTime - 1);
+            blackTimer.style.color = "#ffffff";
+            blackTime = Math.max(0, blackTime - 0.01);
         }
         updateDisplay();
         if (whiteTime === 0 || blackTime === 0) clearInterval(interval);
-    }, 1000);
+    }, 10);
+}
+
+function deActive() {
+    let Timers = [whiteTimer,blackTimer]
+    for (let i = 0; i < Timers.length; i++) {
+        if (currentTurn + "Time" == Timers[i].id) {
+            
+        }
+        Timers[i].style.backgroundColor = "#3c3c3c";
+        Timers[i].style.color = "#000000";
+    }
 }
 
 function updateDisplay() {
@@ -113,46 +198,7 @@ function updateDisplay() {
 
 function formatTime(seconds) {
     let minutes = Math.floor(seconds / 60);
-    let secs = seconds % 60;
+    let secs = Math.floor(seconds % 60);
     return "<b>" + `${minutes}:${secs < 10 ? '0' : ''}${secs}` + "</b>";
 }
 
-if (/Mobi|Android/i.test(navigator.userAgent) || Tester) {
-    console.log("Mobil cihaz kullanılıyor.");
-
-    console.log(document.getElementById("gameDiv").innerHTML);
-
-    // 180 derece döndürme işlemi
-    document.getElementById("Timess").innerHTML = `
-                <div class="row my-1">
-                    <div class="col OrtalamaXY">
-                        <div class="timer" id="whiteTime">5:00</div>
-                    </div>
-                </div>
-                <div class="row my-1">
-                    <div class="col OrtalamaXY">
-                        <div class="timer" id="blackTime">5:00</div>
-                    </div>
-                </div>`
-
-    console.log(document.getElementById("gameDiv").innerHTML);
-
-    document.getElementById("gameDiv").innerHTML = `
-            <div class="row">
-                <div class="col">
-                    <h1>Chess Timer</h1>
-                </div>
-            </div>` + document.getElementById("Timess").innerHTML + `
-            <div class="row">
-                <div class="col">
-                    <h1 style="transform: rotate(180deg);">Chess Timer</h1>
-                </div>
-            </div>`;
-    
-            console.log(document.getElementById("gameDiv").innerHTML);
-                
-    document.getElementById("whiteTime").style.transform = "rotate(180deg)";
-
-} else {
-    console.log("Masaüstü cihaz kullanılıyor.");
-}
