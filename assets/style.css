@@ -4,6 +4,8 @@ body {
     font-size: 1.6rem;
     background-color: #292929;
     color: #ffffff;
+    background-color: rgb(41, 41, 41);
+    color: rgb(255, 255, 255);
     height: 100%;
     margin: 0;
     display: flex;
@@ -17,7 +19,7 @@ html {
 }
 
 .timer {
-    font-size: 10vw;
+    font-size: 15vw;
     cursor: pointer;
     display: flex;
     border-radius: 20px;
@@ -27,7 +29,7 @@ html {
     height: 40vw;
     aspect-ratio: 1;
     background-color: #3c3c3c;
-    color: #000000;
+    color: #1c1c1c;
     transition: color 0.1s;
 }
 
@@ -52,13 +54,39 @@ button {
     color: aliceblue;
 }
 
-input {
+#startBut{
+    width: 100%;
+}
+
+.Mybtn{
+    color: #676767;
+}
+
+.numberBut {
     background-color: transparent;
     border: 2px solid transparent;
     border-bottom: 2px solid #484848;
     color: aliceblue;
     width: 100%;
 }
+input[type="color"] {
+        width: 45px;
+        height: 45px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    
+    input[type="color"]::-webkit-color-swatch {
+        border-radius: 20%;
+        border: none;
+    }
+
+    input[type="color"]::-moz-color-swatch {
+        border-radius: 20%;
+        border: none;
+    }
 
 input:focus {
     outline: none;
